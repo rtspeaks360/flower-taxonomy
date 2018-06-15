@@ -53,5 +53,4 @@ All these tasks are initially covered in the jupyter notebook. Apart from coveri
 
 Here is the results produced by the model when the following image was given to it as an input.
 
-
-
+![asset_result.png](https://raw.githubusercontent.com/rtspeaks360/flower-taxonomy/master/assets/asset_result.png)
