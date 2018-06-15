@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Author: rishabh
 # @Date:   2018-02-15 04:43:40
-# @Last Modified by:   rishabh
-# @Last Modified time: 2018-06-14 18:51:47
+# @Last Modified by:   Rishabh Thukral
+# @Last Modified time: 2018-06-15 19:48:42
 
 '''
 MIT License
@@ -97,7 +97,7 @@ def train(dataloaders, model, epochs=10, cuda=False):
     criterion = nn.NLLLoss()
     optimizer = optim.Adam(model.classifier.parameters(), lr=0.001)
 
-    if cuda:
+    if cuda and torch.cuda.is_available():
         model.cuda()
     else:
         model.cpu()

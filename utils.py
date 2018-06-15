@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Author: rishabh
 # @Date:   2018-02-15 20:11:00
-# @Last Modified by:   rishabh
-# @Last Modified time: 2018-06-14 10:08:42
+# @Last Modified by:   Rishabh Thukral
+# @Last Modified time: 2018-06-15 19:49:34
 
 '''
 MIT License
@@ -10,6 +10,7 @@ MIT License
 Copyright (c) 2018 Rishabh Thukral
 '''
 
+### Imports for basic python modules and PyTorch essentials.
 import numpy as np
 
 import torch
@@ -17,6 +18,7 @@ from torch import nn, optim
 import torch.nn.functional as F
 from torch.autograd import Variable
 from torchvision import datasets, models, transforms
+### end
 
 # [START load_label_map to load dictionary mapping class indices to class names from a JSON file]
 def load_label_map(json_path):

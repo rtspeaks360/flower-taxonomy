@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 # @Author: rishabh
 # @Date:   2018-02-15 20:11:00
-# @Last Modified by:   rishabh
-# @Last Modified time: 2018-06-14 16:12:54
+# @Last Modified by:   Rishabh Thukral
+# @Last Modified time: 2018-06-15 19:47:32
+
 '''
 MIT License
 
 Copyright (c) 2018 Rishabh Thukral
 '''
 
+### Imports for basic python modules and PyTorch essentials
 import argparse
 
 import numpy as np
@@ -19,8 +21,10 @@ from torch.autograd import Variable
 
 from classifier import load_model
 from utils import load_label_map, process_image
+### end
 
 
+# [START Parser definition and declaration of arguments]
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
 parser.add_argument('input', type=str, default=None,
@@ -35,8 +39,10 @@ parser.add_argument('--category_names', type=str, default=None,
                     help='Path to JSON file mapping categories to names')
 
 args = parser.parse_args()
+# [END]
 
 
+# [START Predict function that takes in path of an image as input and gives the probabilities as categories]
 def predict(image_path, model, top_k=5, cuda=False):
     """ Load an image, run it through a model and predict the class with probabilities
 
@@ -83,16 +89,21 @@ def predict(image_path, model, top_k=5, cuda=False):
         top_classes = [idx_to_class[each] for each in top_labels]
 
     return top_probs, top_classes
+# [END]
 
 
+# [START The main function which drives the script]
 if __name__ == '__main__':
 
     image_path = args.input
     model = load_model(args.checkpoint)
 
+    
+    if args.gpu and torch.cuda.is_available():
+        model.cuda()
+    
     model.eval()
-    # if args.gpu:
-        # model.cuda()
+
     top_probs, top_classes = predict(image_path, model, top_k=args.top_k, cuda=args.gpu)
 
     if args.category_names is not None:
@@ -101,4 +112,4 @@ if __name__ == '__main__':
 
     for name, prob in zip(top_classes, top_probs):
         print(f"{name}: {prob:.3f}")
-
+# [END]

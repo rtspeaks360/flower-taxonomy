@@ -1,20 +1,23 @@
 # -*- coding: utf-8 -*-
 # @Author: rishabh
 # @Date:   2018-02-15 20:11:00
-# @Last Modified by:   rishabh
-# @Last Modified time: 2018-06-14 10:08:08
+# @Last Modified by:   Rishabh Thukral
+# @Last Modified time: 2018-06-15 19:24:54
 
 '''
 MIT License
 
 Copyright (c) 2018 Rishabh Thukral
 '''
+
+### Imports for basic python modules and PyTorch
 import datetime
 import torch
 from torch import nn, optim
 import torch.nn.functional as F
 from torch.autograd import Variable
 from torchvision import datasets, models, transforms
+### end
 
 # [START The Feed Forward Classifier defines the custom classifier that will be trained on top of a pretrained model.]
 class FFClassifier(nn.Module):
